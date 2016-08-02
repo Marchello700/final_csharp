@@ -19,7 +19,5 @@ namespace DataLayer
         public int RamUsage { get; set; }
         public int AvailableDiskSpaceGb { get; set; }
         public int AverageDiskQueueLength { get; set; }
-
-
     }
 }

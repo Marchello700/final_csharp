@@ -1,0 +1,8 @@
+C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\DataLayer.dll
+C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\DataLayer.pdb
+C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
