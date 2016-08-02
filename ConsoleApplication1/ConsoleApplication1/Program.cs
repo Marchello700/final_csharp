@@ -19,6 +19,7 @@ namespace ConsoleApplication1
 
             var cpuUsage = dataManager.GetMetric("cpuusage");
             Console.WriteLine($"Current CPU usage: {cpuUsage}%");
+            Console.WriteLine($"Current CPU usage: {cpuUsage}%");
             Console.ReadLine();
         }
     }
