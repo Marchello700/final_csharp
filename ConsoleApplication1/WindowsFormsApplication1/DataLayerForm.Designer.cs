@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.button1 = new System.Windows.Forms.Button();
             this.CpuTextBox = new System.Windows.Forms.TextBox();
             this.NameLabel = new System.Windows.Forms.Label();
@@ -43,11 +47,18 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.IpLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.DataManagerChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.DataManagerChart)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(52, 208);
+            this.button1.Location = new System.Drawing.Point(55, 277);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -167,11 +178,68 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "label5";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(139, 202);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(342, 20);
+            this.textBox1.TabIndex = 15;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(139, 228);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(342, 20);
+            this.textBox3.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(71, 202);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "label5";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(71, 228);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "label5";
+            // 
+            // DataManagerChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.DataManagerChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.DataManagerChart.Legends.Add(legend1);
+            this.DataManagerChart.Location = new System.Drawing.Point(487, 20);
+            this.DataManagerChart.Name = "DataManagerChart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.DataManagerChart.Series.Add(series1);
+            this.DataManagerChart.Size = new System.Drawing.Size(358, 300);
+            this.DataManagerChart.TabIndex = 19;
+            this.DataManagerChart.Text = "DataManagerChart";
+            // 
             // DataLayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 372);
+            this.ClientSize = new System.Drawing.Size(857, 372);
+            this.Controls.Add(this.DataManagerChart);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.IpLabel);
             this.Controls.Add(this.textBox2);
@@ -191,6 +259,7 @@
             this.Name = "DataLayerForm";
             this.Text = "DataLayerForm";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataLayerForm_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.DataManagerChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,6 +282,12 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label IpLabel;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart DataManagerChart;
     }
 }
 
