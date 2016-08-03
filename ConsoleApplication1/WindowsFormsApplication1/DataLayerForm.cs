@@ -8,14 +8,8 @@ namespace WindowsFormsApplication1
 {
     public partial class DataLayerForm : Form
     {
-        private event EventHandler someEvent;
-
-        protected void OnSomeEvent()
-        {
-            someEvent?.Invoke(this, EventArgs.Empty);
-        }
-
         private readonly FullDataManager _dataManager;
+        private UpdaterThread _updaterThread;
 
         private void InitializeLabels()
         {
@@ -37,13 +31,9 @@ namespace WindowsFormsApplication1
             IpTextBox.Text = $"Ip Adress: {_dataManager.GetIp()}";
         }
 
-        public DataLayerForm()
+        private void InitializeCpuRamChart()
         {
-            InitializeComponent();
-            _dataManager = new FullDataManager();
-            InitializeLabels();
-            InitializeTextBoxes();
-            DataManagerChart.Series.Clear();
+            CpuRamChart.Series.Clear();
             var cpuSeries = new Series("Cpu Usage")
             {
                 YValuesPerPoint = 1,
@@ -60,26 +50,72 @@ namespace WindowsFormsApplication1
                 Color = Color.Red,
                 BorderWidth = 3,
                 XValueType = ChartValueType.DateTime,
-                YAxisType = AxisType.Secondary
+                YAxisType = AxisType.Primary
             };
-            DataManagerChart.Series.Add(cpuSeries);
-            DataManagerChart.Series.Add(ramSeries);
-            DataManagerChart.ChartAreas[0].AxisX.LabelStyle.Format = "hh:mm:ss";
-            DataManagerChart.ChartAreas[0].AxisX.Interval = 1;
-//            DataManagerChart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds;
-            DataManagerChart.ChartAreas[0].AxisX.IntervalOffset = 1;
-            //DateTime minDate = new DateTime(2013, 01, 01);
-            //DateTime maxDate = DateTime.Now;
-            //DataManagerChart.ChartAreas[0].AxisX.Minimum = minDate.ToOADate();
-            //DataManagerChart.ChartAreas[0].AxisX.Maximum = maxDate.ToOADate();
-            timer1.Interval = 2000;
-            timer1.Enabled = true;
+            CpuRamChart.Series.Add(cpuSeries);
+            CpuRamChart.Series.Add(ramSeries);
+            CpuRamChart.ChartAreas[0].AxisX.LabelStyle.Format = "hh:mm:ss";
+            CpuRamChart.ChartAreas[0].AxisX.Interval = 1;
+            CpuRamChart.ChartAreas[0].AxisX.IntervalOffset = 1;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void InitializeHDDChart()
         {
+            HDDChart.Series.Clear();
+            var hddSeries = new Series("HDD space")
+            {
+                YValuesPerPoint = 1,
+                ChartType = SeriesChartType.Line,
+                Color = Color.Blue,
+                BorderWidth = 3,
+                XValueType = ChartValueType.DateTime,
+                YAxisType = AxisType.Primary
+            };
+            var queueLengthSeries = new Series("Avr. Queue length")
+            {
+                YValuesPerPoint = 1,
+                ChartType = SeriesChartType.Line,
+                Color = Color.Red,
+                BorderWidth = 3,
+                XValueType = ChartValueType.DateTime,
+                YAxisType = AxisType.Secondary
+            };
+            HDDChart.Series.Add(hddSeries);
+            HDDChart.Series.Add(queueLengthSeries);
+            HDDChart.ChartAreas[0].AxisX.LabelStyle.Format = "hh:mm:ss";
+            HDDChart.ChartAreas[0].AxisX.Interval = 1;
+            HDDChart.ChartAreas[0].AxisX.IntervalOffset = 1;
+        }
+
+        private void ClearOldPoints(Series series)
+        {
+            while (series.Points.Count > 10)
+            {
+                series.Points.RemoveAt(0);
+            }
+        }
+
+        private void ClearOldPoints(Chart chart)
+        {
+            foreach(var series in chart.Series)
+            {
+                ClearOldPoints(series);
+            }
+        }
+
+        public DataLayerForm()
+        {
+            InitializeComponent();
+            _dataManager = new FullDataManager();
+            _updaterThread = new UpdaterThread(_dataManager);
             InitializeLabels();
             InitializeTextBoxes();
+
+            InitializeCpuRamChart();
+            InitializeHDDChart();
+
+            _updaterThread.UpdateFinished += UpdateCharts;
+            _updaterThread.Start();
         }
 
         private void DataLayerForm_KeyDown(object sender, KeyEventArgs e)
@@ -90,22 +126,20 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void UpdateCharts(object sender, EventArgs e)
         {
-            int yValue = _dataManager.GetCpuUsage();
+            var TimeMark = _updaterThread.TimeMark;
+            CpuRamChart.Series[0].Points.AddXY(TimeMark, _updaterThread.CpuUsage);
+            CpuRamChart.Series[1].Points.AddXY(TimeMark, _updaterThread.RamUsage);
+            ClearOldPoints(CpuRamChart);
+            HDDChart.Series[0].Points.AddXY(TimeMark, _updaterThread.AvailableDiskSpaceGb);
+            HDDChart.Series[1].Points.AddXY(TimeMark, _updaterThread.AverageQueueLength);
+            ClearOldPoints(HDDChart);
+        }
 
-            DataManagerChart.Series[0].Points.AddXY(DateTime.Now.ToString("hh:mm:ss"), yValue);
-            yValue = _dataManager.GetRamUsage();
-            DataManagerChart.Series[1].Points.AddXY(DateTime.Now.ToString("hh:mm:ss"), yValue);
-
-            while (DataManagerChart.Series[0].Points.Count > 10)
-            {
-                DataManagerChart.Series[0].Points.RemoveAt(0);
-            }
-            while (DataManagerChart.Series[1].Points.Count > 10)
-            {
-                DataManagerChart.Series[1].Points.RemoveAt(0);
-            }
+        private void DataLayerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _updaterThread.Abort();
         }
     }
 }

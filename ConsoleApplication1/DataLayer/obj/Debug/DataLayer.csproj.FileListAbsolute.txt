@@ -3,3 +3,8 @@ C:\New folder\AcademyProject\ConsoleApplication1\DataLayer\bin\Debug\DataLayer.p
 C:\New folder\AcademyProject\ConsoleApplication1\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
 C:\New folder\AcademyProject\ConsoleApplication1\DataLayer\obj\Debug\DataLayer.dll
 C:\New folder\AcademyProject\ConsoleApplication1\DataLayer\obj\Debug\DataLayer.pdb
+D:\Xplicity_AcademyProject\ConsoleApplication1\DataLayer\bin\Debug\DataLayer.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\DataLayer\bin\Debug\DataLayer.pdb
+D:\Xplicity_AcademyProject\ConsoleApplication1\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+D:\Xplicity_AcademyProject\ConsoleApplication1\DataLayer\obj\Debug\DataLayer.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\DataLayer\obj\Debug\DataLayer.pdb

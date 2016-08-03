@@ -144,6 +144,8 @@ namespace DataLayer
         public int GetCpuUsage()
         {
             var value = GetManagementObjectStringField(GetManagementObject("Win32_PerfFormattedData_PerfOS_Processor"), "PercentProcessorTime");
+            //var cpuList = this.GetManagementObjectList("Win32_PerfFormattedData_PerfOS_Processor");
+            //there is MO for each cpu core and additionally for "_total" cpu
             int result;
             if (int.TryParse(value, out result))
             {

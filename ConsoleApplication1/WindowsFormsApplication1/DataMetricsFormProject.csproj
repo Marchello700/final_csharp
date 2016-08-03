@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdaterThread.cs" />
     <EmbeddedResource Include="DataLayerForm.resx">
       <DependentUpon>DataLayerForm.cs</DependentUpon>
     </EmbeddedResource>
