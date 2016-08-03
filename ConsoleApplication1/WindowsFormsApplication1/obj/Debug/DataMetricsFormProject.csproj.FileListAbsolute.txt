@@ -1,0 +1,11 @@
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\DataLayer.dll
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\DataLayer.pdb
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\obj\Debug\DataMetricsFormProject.csprojResolveAssemblyReference.cache
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\obj\Debug\DataMetricsFormProject.csproj.GenerateResource.Cache
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.DataLayerForm.resources
