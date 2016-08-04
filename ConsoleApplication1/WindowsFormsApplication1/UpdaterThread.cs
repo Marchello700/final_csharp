@@ -2,18 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using SQLiteClassLibrary;
 
 namespace WindowsFormsApplication1
 {
-    class UpdaterThread
+    public class UpdaterThread
     {
-        private Thread _thread;
-        private SynchronizationContext _syncContext;
-        private FullDataManager _dataManager;
+        private readonly Thread _thread;
+        private readonly SynchronizationContext _syncContext;
+        private readonly FullDataManager _dataManager;
 
         public string TimeMark { get; set; }
         public int CpuUsage { get; set; }
@@ -36,8 +34,28 @@ namespace WindowsFormsApplication1
                     AvailableDiskSpaceGb = _dataManager.GetAvailableDiskSpaceGb();
                     AverageQueueLength = _dataManager.GetAverageDiskQueueLength();
                     OnUpdateFinished(); // Notify all subscribers (on their own threads)  
-                    DateTime end = DateTime.Now;
 
+                    using (var metricsContext = new MetricsContext())
+                    {
+                        var computerDetails = metricsContext.ComputerDetails.First();
+                        var usageData = new UsageData
+                        {
+                            AvailableDiskSpaceGb = AvailableDiskSpaceGb,
+                            AverageQueueLength = AverageQueueLength,
+                            CpuUsage = CpuUsage,
+                            RamUsage = RamUsage,
+                            Time = start
+                        };
+                        if (computerDetails.UsageDataCollection == null)
+                        {
+                            computerDetails.UsageDataCollection = new List<UsageData>();
+                        }
+                        computerDetails.UsageDataCollection.Add(usageData);
+                        metricsContext.Update(computerDetails);
+                        metricsContext.SaveChanges();
+                    }
+
+                    DateTime end = DateTime.Now;
                     int difference = (int)end.Subtract(start).TotalMilliseconds;
 
                     var remainingTime = 1000 - difference;
@@ -57,20 +75,24 @@ namespace WindowsFormsApplication1
         {
             _dataManager = dataManager;
             _syncContext = SynchronizationContext.Current;
-            _thread = new Thread(ThreadExecute);
-            _thread.IsBackground = true;
-            _thread.Name = "UpdateThread";
-            _thread.Priority = ThreadPriority.Normal;
+            _thread = new Thread(ThreadExecute)
+            {
+                IsBackground = true,
+                Name = "UpdateThread",
+                Priority = ThreadPriority.Normal
+            };
         }
 
         public UpdaterThread()
         {
             _dataManager = new FullDataManager();
             _syncContext = SynchronizationContext.Current;
-            _thread = new Thread(new ThreadStart(ThreadExecute));
-            _thread.IsBackground = true;
-            _thread.Name = "UpdateThread";
-            _thread.Priority = ThreadPriority.Normal;
+            _thread = new Thread(ThreadExecute)
+            {
+                IsBackground = true,
+                Name = "UpdateThread",
+                Priority = ThreadPriority.Normal
+            };
         }
 
         public void Start()
@@ -97,11 +119,9 @@ namespace WindowsFormsApplication1
         {
             if (UpdateFinished != null)
             {
-                SendOrPostCallback method = new SendOrPostCallback(
-                delegate (object state)
-                {
+                SendOrPostCallback method = delegate {
                     UpdateFinished(this, EventArgs.Empty);
-                });
+                };
                 _syncContext.Send(method, null);
             }
         }

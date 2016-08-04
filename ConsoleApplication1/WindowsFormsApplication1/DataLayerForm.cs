@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using DataLayer;
+using SQLiteClassLibrary;
 
 namespace WindowsFormsApplication1
 {
     public partial class DataLayerForm : Form
     {
         private readonly FullDataManager _dataManager;
-        private UpdaterThread _updaterThread;
+        private readonly UpdaterThread _updaterThread;
 
         private void InitializeLabels()
         {
@@ -59,7 +61,7 @@ namespace WindowsFormsApplication1
             CpuRamChart.ChartAreas[0].AxisX.IntervalOffset = 1;
         }
 
-        private void InitializeHDDChart()
+        private void InitializeHddChart()
         {
             HDDChart.Series.Clear();
             var hddSeries = new Series("HDD space")
@@ -112,10 +114,37 @@ namespace WindowsFormsApplication1
             InitializeTextBoxes();
 
             InitializeCpuRamChart();
-            InitializeHDDChart();
+            InitializeHddChart();
 
             _updaterThread.UpdateFinished += UpdateCharts;
             _updaterThread.Start();
+
+            using (var context = new MetricsContext())
+            {
+                context.Database.EnsureCreated();
+            }
+
+            //var computerDetail = new ComputerDetail();
+            //computerDetail.ComputerName = _dataManager.GetName();
+            //computerDetail.UserName = _dataManager.GetUser();
+            //computerDetail.Cpu = _dataManager.GetCpu();
+            //computerDetail.Ram = _dataManager.GetRamGb().ToString();
+            //computerDetail.VideoCard = _dataManager.GetVideoCard();
+            //computerDetail.Ip = _dataManager.GetIp().ToString();
+
+            //var metricsContext = new MetricsContext();
+            //metricsContext.Add(computerDetail);
+            //metricsContext.SaveChanges();
+
+            //            public int ComputerDetailId { get; set; }
+            //public string ComputerName { get; set; }
+            //public string UserName { get; set; }
+            //public string Cpu { get; set; }
+            //public string Ram { get; set; }
+            //public string VideoCard { get; set; }
+            //public string Ip { get; set; }
+            //public ICollection<UsageData> UsageDataCollection { get; set; }
+
         }
 
         private void DataLayerForm_KeyDown(object sender, KeyEventArgs e)
@@ -140,6 +169,11 @@ namespace WindowsFormsApplication1
         private void DataLayerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             _updaterThread.Abort();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

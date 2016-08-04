@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.button1 = new System.Windows.Forms.Button();
             this.CpuTextBox = new System.Windows.Forms.TextBox();
             this.NameLabel = new System.Windows.Forms.Label();
@@ -67,6 +67,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CpuTextBox
             // 
@@ -214,32 +215,32 @@
             // 
             // CpuRamChart
             // 
-            chartArea7.Name = "ChartArea1";
-            this.CpuRamChart.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.CpuRamChart.Legends.Add(legend7);
+            chartArea1.Name = "ChartArea1";
+            this.CpuRamChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.CpuRamChart.Legends.Add(legend1);
             this.CpuRamChart.Location = new System.Drawing.Point(446, 12);
             this.CpuRamChart.Name = "CpuRamChart";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.CpuRamChart.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.CpuRamChart.Series.Add(series1);
             this.CpuRamChart.Size = new System.Drawing.Size(358, 300);
             this.CpuRamChart.TabIndex = 19;
             this.CpuRamChart.Text = "DataManagerChart";
             // 
             // HDDChart
             // 
-            chartArea8.Name = "ChartArea1";
-            this.HDDChart.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.HDDChart.Legends.Add(legend8);
+            chartArea2.Name = "ChartArea1";
+            this.HDDChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.HDDChart.Legends.Add(legend2);
             this.HDDChart.Location = new System.Drawing.Point(446, 318);
             this.HDDChart.Name = "HDDChart";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.HDDChart.Series.Add(series8);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.HDDChart.Series.Add(series2);
             this.HDDChart.Size = new System.Drawing.Size(358, 300);
             this.HDDChart.TabIndex = 20;
             this.HDDChart.Text = "chart1";
