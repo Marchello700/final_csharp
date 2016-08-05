@@ -6,3 +6,11 @@ C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\D
 C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
 C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 C:\New folder\AcademyProject\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\Xplicity_AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Xplicity_AcademyProject\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Xplicity_AcademyProject\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\Xplicity_AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Xplicity_AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Xplicity_AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\DataLayer.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\ConsoleApplication1\bin\Debug\DataLayer.pdb
+D:\Xplicity_AcademyProject\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace DataLayer
@@ -49,6 +50,18 @@ namespace DataLayer
             hardwareList.Add("CdRom: " + GetCdRom());
             hardwareList.Add("RAM: " + GetRamPartNumber());
             return hardwareList;
+        }
+
+        public override ComputerUsageData GetComputerUsageData()
+        {
+            return new ComputerUsageData()
+            {
+                TimeMark = DateTime.Now,
+                CpuUsage = GetCpuUsage(),
+                RamUsage = GetRamUsage(),
+                AvailableDiskSpaceGb = GetAvailableDiskSpaceGb(),
+                AverageQueueLength = GetAverageDiskQueueLength()
+            };
         }
     }
 }

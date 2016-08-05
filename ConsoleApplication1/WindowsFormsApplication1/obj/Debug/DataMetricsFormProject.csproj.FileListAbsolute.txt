@@ -64,3 +64,47 @@ C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\De
 C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Logging.xml
 C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.OptionsModel.xml
 C:\New folder\AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Primitives.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\x86\sqlite3.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\x64\sqlite3.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\EntityFramework.Core.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\EntityFramework.Relational.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\EntityFramework.Sqlite.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Data.Sqlite.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Configuration.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Logging.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.OptionsModel.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.PlatformAbstractions.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Primitives.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Remotion.Linq.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\SQLiteClassLibrary.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\System.Collections.Immutable.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\System.Interactive.Async.dll
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\SQLiteClassLibrary.pdb
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\EntityFramework.Core.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\EntityFramework.Relational.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\EntityFramework.Sqlite.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Data.Sqlite.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Configuration.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Logging.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.OptionsModel.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.PlatformAbstractions.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.Extensions.Primitives.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\Remotion.Linq.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\System.Collections.Immutable.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Xplicity_AcademyProject\ConsoleApplication1\WindowsFormsApplication1\bin\Debug\System.Interactive.Async.xml

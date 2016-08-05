@@ -211,6 +211,7 @@ namespace DataLayer
         }
 
         public abstract ComputerSummary GetComputerSummary();
+        public abstract ComputerUsageData GetComputerUsageData();
         public abstract List<string> GetApplicationList();
         public abstract List<string> GetHardwareList();
     }

@@ -11,15 +11,9 @@ namespace WindowsFormsApplication1
     {
         private readonly Thread _thread;
         private readonly SynchronizationContext _syncContext;
-        private readonly FullDataManager _dataManager;
+        private readonly string _computerName;
 
-        public string TimeMark { get; set; }
-        public int CpuUsage { get; set; }
-        public int RamUsage { get; set; }
-        public int AvailableDiskSpaceGb { get; set; }
-        public int AverageQueueLength { get; set; }
-
-        public event EventHandler UpdateFinished;
+        public event EventHandler<UpdateEventArgs> UpdateFinished;
 
         private void ThreadExecute()
         {
@@ -28,36 +22,12 @@ namespace WindowsFormsApplication1
                 while (true)
                 {
                     DateTime start = DateTime.Now;
-                    TimeMark = DateTime.Now.ToString("hh:mm:ss");
-                    CpuUsage = _dataManager.GetCpuUsage();
-                    RamUsage = _dataManager.GetRamUsage();
-                    AvailableDiskSpaceGb = _dataManager.GetAvailableDiskSpaceGb();
-                    AverageQueueLength = _dataManager.GetAverageDiskQueueLength();
-                    OnUpdateFinished(); // Notify all subscribers (on their own threads)  
-
-                    using (var metricsContext = new MetricsContext())
+                    using (var _metricsContext = new MetricsContext())
                     {
-                        var computerDetails = metricsContext.ComputerDetails.First();
-                        var usageData = new UsageData
-                        {
-                            AvailableDiskSpaceGb = AvailableDiskSpaceGb,
-                            AverageQueueLength = AverageQueueLength,
-                            CpuUsage = CpuUsage,
-                            RamUsage = RamUsage,
-                            Time = start
-                        };
-                        if (computerDetails.UsageDataCollection == null)
-                        {
-                            computerDetails.UsageDataCollection = new List<UsageData>();
-                        }
-                        computerDetails.UsageDataCollection.Add(usageData);
-                        metricsContext.Update(computerDetails);
-                        metricsContext.SaveChanges();
+                        OnUpdateFinished(MetricsContextSupport.GetComputerDetail(_metricsContext, _computerName));
                     }
-
                     DateTime end = DateTime.Now;
                     int difference = (int)end.Subtract(start).TotalMilliseconds;
-
                     var remainingTime = 1000 - difference;
                     if (remainingTime > 0)
                     {
@@ -71,9 +41,8 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public UpdaterThread(FullDataManager dataManager)
+        public UpdaterThread(string computerName)
         {
-            _dataManager = dataManager;
             _syncContext = SynchronizationContext.Current;
             _thread = new Thread(ThreadExecute)
             {
@@ -81,18 +50,11 @@ namespace WindowsFormsApplication1
                 Name = "UpdateThread",
                 Priority = ThreadPriority.Normal
             };
-        }
-
-        public UpdaterThread()
-        {
-            _dataManager = new FullDataManager();
-            _syncContext = SynchronizationContext.Current;
-            _thread = new Thread(ThreadExecute)
+            _computerName = computerName;
+            using (var _metricsContext = new MetricsContext())
             {
-                IsBackground = true,
-                Name = "UpdateThread",
-                Priority = ThreadPriority.Normal
-            };
+                _metricsContext.Database.EnsureCreated();
+            }
         }
 
         public void Start()
@@ -115,12 +77,12 @@ namespace WindowsFormsApplication1
             }
         }
 
-        protected virtual void OnUpdateFinished()
+        protected virtual void OnUpdateFinished(ComputerDetail computerDetail)
         {
             if (UpdateFinished != null)
             {
                 SendOrPostCallback method = delegate {
-                    UpdateFinished(this, EventArgs.Empty);
+                    UpdateFinished(this, new UpdateEventArgs(computerDetail));
                 };
                 _syncContext.Send(method, null);
             }

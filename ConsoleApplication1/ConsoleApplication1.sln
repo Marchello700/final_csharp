@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{9EC7E979-E0BB-42D2-8B12-391CF2D3DCC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMetricsFormProject", "WindowsFormsApplication1\DataMetricsFormProject.csproj", "{FDA64205-E930-4B9C-8077-057EA6B71C46}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMetricsForm", "WindowsFormsApplication1\DataMetricsForm.csproj", "{FDA64205-E930-4B9C-8077-057EA6B71C46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteClassLibrary", "SQLiteClassLibrary\SQLiteClassLibrary.csproj", "{7F14F78C-9D64-437D-A054-0251D8BBE742}"
 EndProject
