@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using DataLayer;
@@ -11,9 +9,8 @@ namespace WindowsFormsApplication1
 {
     public partial class DataLayerForm : Form
     {
-        private const int maxPointCount = 10;
+        private const int MaxPointCount = 10;
 
-        private readonly FullDataManager _dataManager;
         private readonly DataPullerThread _dataPullerThread;
         private readonly UpdaterThread _updaterThread;
 
@@ -36,16 +33,6 @@ namespace WindowsFormsApplication1
             VideoCardTexBox.Text = computerDetail.VideoCard;
             IpTextBox.Text = computerDetail.Ip;
         }
-
-        //private void InitializeTextBoxes()
-        //{
-        //    NameTextBox.Text = _dataManager.GetName();
-        //    UserTextBox.Text = _dataManager.GetUser();
-        //    CpuTextBox.Text = _dataManager.GetCpu();
-        //    RamTextBox.Text = $"Ram: {_dataManager.GetRamGb()}GB";
-        //    VideoCardTexBox.Text = _dataManager.GetVideoCard();
-        //    IpTextBox.Text = $"Ip Adress: {_dataManager.GetIp()}";
-        //}
 
         private void InitializeCpuRamChart()
         {
@@ -103,37 +90,18 @@ namespace WindowsFormsApplication1
             HDDChart.ChartAreas[0].AxisX.IntervalOffset = 1;
         }
 
-        private void ClearOldPoints(Series series)
-        {
-            while (series.Points.Count > maxPointCount)
-            {
-                series.Points.RemoveAt(0);
-            }
-        }
-
-        private void ClearOldPoints(Chart chart)
-        {
-            foreach(var series in chart.Series)
-            {
-                ClearOldPoints(series);
-            }
-        }
-
         public DataLayerForm()
         {
             InitializeComponent();
-            _dataManager = new FullDataManager();
+            var dataManager = new FullDataManager();
             _dataPullerThread = new DataPullerThread();
             _dataPullerThread.Start();
-            ComputerDetail computerDetail = null;
+            ComputerDetail computerDetail;
             using (var context = new MetricsContext())
             {
                 context.Database.EnsureCreated();
-                computerDetail = MetricsContextSupport.GetComputerDetail(context, _dataManager.GetName());
-                if (computerDetail == null)
-                {
-                    computerDetail = MetricsContextSupport.AddComputerDetail(context, _dataManager.GetComputerSummary());
-                }
+                computerDetail = MetricsContextSupport.GetComputerDetail(context, dataManager.GetName()) ??
+                                 MetricsContextSupport.AddComputerDetail(context, dataManager.GetComputerSummary());
             }
             InitializeLabels();
             InitializeTextBoxes(computerDetail);
@@ -148,6 +116,8 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyCode == Keys.Escape)
             {
+                _dataPullerThread.Abort();
+                _updaterThread.Abort();
                 Close();
             }
         }
@@ -158,32 +128,25 @@ namespace WindowsFormsApplication1
             {
                 return;
             }
-            var UsageDatas = e.GetComputerDetail().UsageDataCollection.ToList();
-            if (UsageDatas.Count > maxPointCount)
+            var usageDatas = e.GetComputerDetail().UsageDataCollection.ToList();
+            if (usageDatas.Count > MaxPointCount)
             {
-                UsageDatas.RemoveRange(0, UsageDatas.Count - maxPointCount);
+                usageDatas.RemoveRange(0, usageDatas.Count - MaxPointCount);
             }
             CpuRamChart.Series[0].Points.Clear();
             CpuRamChart.Series[1].Points.Clear();
             HDDChart.Series[0].Points.Clear();
             HDDChart.Series[1].Points.Clear();
-            foreach (var UsageData in UsageDatas)
+            foreach (var usageData in usageDatas)
             {
-                
-                var TimeMark = UsageData.Time?.ToString("hh:mm:ss");
-                CpuRamChart.Series[0].Points.AddXY(TimeMark, UsageData.CpuUsage);
-                CpuRamChart.Series[1].Points.AddXY(TimeMark, UsageData.RamUsage);
+                var timeMark = usageData.Time?.ToString("hh:mm:ss");
+                CpuRamChart.Series[0].Points.AddXY(timeMark, usageData.CpuUsage);
+                CpuRamChart.Series[1].Points.AddXY(timeMark, usageData.RamUsage);
                 //ClearOldPoints(CpuRamChart);
-                HDDChart.Series[0].Points.AddXY(TimeMark, UsageData.AvailableDiskSpaceGb);
-                HDDChart.Series[1].Points.AddXY(TimeMark, UsageData.AverageQueueLength);
+                HDDChart.Series[0].Points.AddXY(timeMark, usageData.AvailableDiskSpaceGb);
+                HDDChart.Series[1].Points.AddXY(timeMark, usageData.AverageQueueLength);
                 //ClearOldPoints(HDDChart);
             }
-        }
-
-        private void DataLayerForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            _dataPullerThread.Abort();
-            _updaterThread.Abort();
         }
     }
 }

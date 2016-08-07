@@ -262,7 +262,6 @@
             this.KeyPreview = true;
             this.Name = "DataLayerForm";
             this.Text = "DataLayerForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataLayerForm_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataLayerForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.CpuRamChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HDDChart)).EndInit();

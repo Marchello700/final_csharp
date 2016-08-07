@@ -38,10 +38,12 @@ namespace DataLayer
 
         public override List<string> GetHardwareList()
         {
-            List<string> hardwareList = new List<string>();
-            hardwareList.Add("CPU: " + GetCpu());
-            hardwareList.Add("VideoCard: " + GetVideoCard());
-            hardwareList.Add("MotherBoard: " + GetMotherBoard());
+            List<string> hardwareList = new List<string>
+            {
+                "CPU: " + GetCpu(),
+                "VideoCard: " + GetVideoCard(),
+                "MotherBoard: " + GetMotherBoard()
+            };
             var hddList = GetHddList();
             foreach (var hddCaption in hddList)
             {

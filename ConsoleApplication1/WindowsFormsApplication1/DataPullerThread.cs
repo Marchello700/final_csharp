@@ -1,7 +1,6 @@
 ﻿using DataLayer;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using SQLiteClassLibrary;
 
@@ -21,14 +20,14 @@ namespace WindowsFormsApplication1
                 while (true)
                 {
                     DateTime start = DateTime.Now;
-                    var CompUsageData = _dataManager.GetComputerUsageData();
+                    var compUsageData = _dataManager.GetComputerUsageData();
                     var usageData = new UsageData
                     {
-                        AvailableDiskSpaceGb = CompUsageData.AvailableDiskSpaceGb,
-                        AverageQueueLength = CompUsageData.AverageQueueLength,
-                        CpuUsage = CompUsageData.CpuUsage,
-                        RamUsage = CompUsageData.RamUsage,
-                        Time = CompUsageData.TimeMark
+                        AvailableDiskSpaceGb = compUsageData.AvailableDiskSpaceGb,
+                        AverageQueueLength = compUsageData.AverageQueueLength,
+                        CpuUsage = compUsageData.CpuUsage,
+                        RamUsage = compUsageData.RamUsage,
+                        Time = compUsageData.TimeMark
                     };
                     _computerDetail.UsageDataCollection.Add(usageData);
                     _metricsContext.Update(_computerDetail);
@@ -50,11 +49,8 @@ namespace WindowsFormsApplication1
 
         private ComputerDetail GetComputerDetail()
         {
-            ComputerDetail computerDetail = MetricsContextSupport.GetComputerDetail(_metricsContext, _dataManager.GetName());
-            if (computerDetail == null)
-            {
-                computerDetail = MetricsContextSupport.AddComputerDetail(_metricsContext,_dataManager.GetComputerSummary());
-            }
+            ComputerDetail computerDetail = MetricsContextSupport.GetComputerDetail(_metricsContext, _dataManager.GetName()) ??
+                                            MetricsContextSupport.AddComputerDetail(_metricsContext,_dataManager.GetComputerSummary());
             return computerDetail;
         }
 

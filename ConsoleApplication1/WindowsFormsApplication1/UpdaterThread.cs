@@ -1,7 +1,4 @@
-﻿using DataLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Threading;
 using SQLiteClassLibrary;
 
@@ -22,9 +19,9 @@ namespace WindowsFormsApplication1
                 while (true)
                 {
                     DateTime start = DateTime.Now;
-                    using (var _metricsContext = new MetricsContext())
+                    using (var metricsContext = new MetricsContext())
                     {
-                        OnUpdateFinished(MetricsContextSupport.GetComputerDetail(_metricsContext, _computerName));
+                        OnUpdateFinished(MetricsContextSupport.GetComputerDetail(metricsContext, _computerName));
                     }
                     DateTime end = DateTime.Now;
                     int difference = (int)end.Subtract(start).TotalMilliseconds;
@@ -51,9 +48,9 @@ namespace WindowsFormsApplication1
                 Priority = ThreadPriority.Normal
             };
             _computerName = computerName;
-            using (var _metricsContext = new MetricsContext())
+            using (var metricsContext = new MetricsContext())
             {
-                _metricsContext.Database.EnsureCreated();
+                metricsContext.Database.EnsureCreated();
             }
         }
 
