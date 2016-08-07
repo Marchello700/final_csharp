@@ -1,4 +1,5 @@
 ﻿using DataLayer;
+using Microsoft.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,7 @@ namespace SQLiteClassLibrary
     {
         public static ComputerDetail GetComputerDetail(MetricsContext metricsContext, string computerName)
         {
-            var computerDetail = metricsContext.ComputerDetails.FirstOrDefault(x => x.ComputerName == computerName);
-            computerDetail.UsageDataCollection = metricsContext.UsageDatas.ToList();
+            var computerDetail = metricsContext.ComputerDetails.Where(x => x.ComputerName == computerName).Include(x => x.UsageDataCollection).FirstOrDefault();
             return computerDetail;
         }
 
