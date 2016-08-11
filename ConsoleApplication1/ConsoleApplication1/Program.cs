@@ -1,46 +1,37 @@
 ﻿using System;
-using DataLayer;
+using static System.Int32;
 
 namespace ConsoleApplication1
 {
     class Program
     {
+        private static void Log(string data)
+        {
+            Console.WriteLine($"[Log][{DateTime.Now.ToString("HH:mm:ss")}]: " + data);
+        }
+
         static void Main(string[] args)
         {
-            var dataManager = new FullDataManager();
-
-            var applicationsNames = dataManager.GetApplicationList();
-            Console.WriteLine("Application list:");
-            foreach (var applicationName in applicationsNames)
+            DataPullerThread dataPullerThread;
+            int vmValue = 18;
+            int timePeriodValue = 1000;
+            if (args.Length == 2)
             {
-                Console.WriteLine(applicationName);
+                TryParse(args[0], out vmValue);
+                TryParse(args[1], out timePeriodValue);
+                dataPullerThread = new DataPullerThread(vmValue, timePeriodValue);
             }
-            Console.WriteLine();
-
-            var computerSummary = dataManager.GetComputerSummary();
-            Console.WriteLine("Computer summary:");
-            Console.WriteLine($"Name: {computerSummary.Name}");
-            Console.WriteLine($"User: {computerSummary.User}");
-            Console.WriteLine($"CPU: {computerSummary.Cpu}");
-            Console.WriteLine($"Ram: {computerSummary.Ram}GB");
-            Console.WriteLine($"Video Card: {computerSummary.VideoCard}");
-            Console.WriteLine($"Ip Adress: {computerSummary.Ip}");
-            Console.WriteLine($"CpuUsage: {computerSummary.CpuUsage}%");
-            Console.WriteLine($"RamUsage: {computerSummary.RamUsage}%");
-            Console.WriteLine($"AvailableDiskSpaceGb: {computerSummary.AvailableDiskSpaceGb}GB");
-            Console.WriteLine($"AverageDiskQueueLength: {computerSummary.AverageDiskQueueLength}");
-            Console.WriteLine();
-
-            
-            var hardwareList = dataManager.GetHardwareList();
-            Console.WriteLine("Hardware list:");
-            foreach (var hardware in hardwareList)
+            else
             {
-                Console.WriteLine(hardware);
+                dataPullerThread = new DataPullerThread(18,1000);
             }
-            Console.WriteLine();
-
-            Console.ReadLine();
+            Log($"vmId:{vmValue}");
+            Log($"timePeriodValue:{timePeriodValue}");
+            Log("Thread started");
+            dataPullerThread.Start();
+            Console.ReadKey();
+            dataPullerThread.Abort();
+            Log("Thread aborted");
         }
     }
 }

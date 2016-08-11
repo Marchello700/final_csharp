@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMetricsForm", "WindowsF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteClassLibrary", "SQLiteClassLibrary\SQLiteClassLibrary.csproj", "{7F14F78C-9D64-437D-A054-0251D8BBE742}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToWebAPI", "SendToWebAPI\SendToWebAPI.csproj", "{1253F776-0543-4A4F-94E4-E71C7A69E752}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7F14F78C-9D64-437D-A054-0251D8BBE742}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F14F78C-9D64-437D-A054-0251D8BBE742}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F14F78C-9D64-437D-A054-0251D8BBE742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1253F776-0543-4A4F-94E4-E71C7A69E752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1253F776-0543-4A4F-94E4-E71C7A69E752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1253F776-0543-4A4F-94E4-E71C7A69E752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1253F776-0543-4A4F-94E4-E71C7A69E752}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

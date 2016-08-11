@@ -36,6 +36,13 @@
     <StartupObject>ConsoleApplication1.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework.Core">
+      <HintPath>..\packages\EntityFramework.Core.7.0.0-rc1-final\lib\net451\EntityFramework.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
@@ -47,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataPullerThread.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,6 +65,14 @@
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{9ec7e979-e0bb-42d2-8b12-391cf2d3dcc5}</Project>
       <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SendToWebAPI\SendToWebAPI.csproj">
+      <Project>{1253f776-0543-4a4f-94e4-e71c7a69e752}</Project>
+      <Name>SendToWebAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQLiteClassLibrary\SQLiteClassLibrary.csproj">
+      <Project>{7f14f78c-9d64-437d-a054-0251d8bbe742}</Project>
+      <Name>SQLiteClassLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,8 @@
+C:\exam-datapuller\SendToWebAPI\SendToWebAPI\bin\Debug\SendToWebAPI.exe.config
+C:\exam-datapuller\SendToWebAPI\SendToWebAPI\bin\Debug\SendToWebAPI.exe
+C:\exam-datapuller\SendToWebAPI\SendToWebAPI\bin\Debug\SendToWebAPI.pdb
+C:\exam-datapuller\SendToWebAPI\SendToWebAPI\bin\Debug\Newtonsoft.Json.dll
+C:\exam-datapuller\SendToWebAPI\SendToWebAPI\bin\Debug\Newtonsoft.Json.xml
+C:\exam-datapuller\SendToWebAPI\SendToWebAPI\obj\Debug\SendToWebAPI.csprojResolveAssemblyReference.cache
+C:\exam-datapuller\SendToWebAPI\SendToWebAPI\obj\Debug\SendToWebAPI.exe
+C:\exam-datapuller\SendToWebAPI\SendToWebAPI\obj\Debug\SendToWebAPI.pdb

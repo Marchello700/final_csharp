@@ -9,6 +9,6 @@ namespace SQLiteClassLibrary
         public int RamUsage { get; set; }
         public int AvailableDiskSpaceGb { get; set; }
         public int AverageQueueLength { get; set; }
-        public DateTime? Time { get; set; }
+        public DateTime Time { get; set; }
     }
 }
